@@ -8,6 +8,8 @@ const TAMANIO_CELDA = 25;
 function dibujarTodo() {
   limpiarCanvas();
   dibujarTablero();
+  pintarParte(0,19);
+
 }
 
 function limpiarCanvas() {
@@ -42,5 +44,30 @@ function dibujarTablero() {
         ctx.stroke();
     }
 }
+
+function pintarParte(lineaX, lineaY){
+
+    ctx.fillStyle = "#3f5b8a";
+
+    ctx.fillRect(
+        lineaX * TAMANIO_CELDA,
+        lineaY * TAMANIO_CELDA,
+        TAMANIO_CELDA,
+        TAMANIO_CELDA
+    );
+
+    ctx.strokeStyle = "black";
+
+    ctx.strokeRect(
+        lineaX * TAMANIO_CELDA,
+        lineaY * TAMANIO_CELDA,
+        TAMANIO_CELDA,
+        TAMANIO_CELDA
+    );
+}
+
+
+
+
 
 dibujarTodo();
