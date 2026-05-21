@@ -14,6 +14,8 @@ const serpiente = [
 
 let puntaje = 0;
 
+let velocidad = 300;
+
 let comidaX = 0;
 let comidaY = 0;
 
@@ -23,7 +25,14 @@ let intervaloSerpiente;
 
 function iniciarJuego(){
 
-    intervaloSerpiente = setInterval(moverSerpiente, 1000);
+    clearInterval(intervaloSerpiente);
+
+    intervaloSerpiente = setInterval(
+        moverSerpiente,
+        velocidad
+    );
+
+    document.getElementById("estado").innerText = "Jugando"
 }
 
 function pausarJuego(){
@@ -165,6 +174,36 @@ function moverAbajo(){
 
 function cambiarDireccion(direccion){
 
+//si la serpiente va a hacia la derecha y quiere que regrese al mismo lado no va a poder, es decir, no se va a mover hacia su cola
+
+    if(
+        direccionActual == "derecha" &&
+        direccion == "izquierda"
+    ){
+        return;
+    }
+
+    if(
+        direccionActual == "izquierda" &&
+        direccion == "derecha"
+    ){
+        return;
+    }
+
+    if(
+        direccionActual == "arriba" &&
+        direccion == "abajo"
+    ){
+        return;
+    }
+
+    if(
+        direccionActual == "abajo" &&
+        direccion == "arriba"
+    ){
+        return;
+    }
+
     direccionActual = direccion;
 }
 
@@ -185,6 +224,16 @@ function moverSerpiente(){
     }else if(direccionActual == "abajo"){
 
         moverAbajo();
+    }
+
+    if(verificarGameOver()){
+
+        pausarJuego();
+
+        document.getElementById("estado").innerText =
+        "GAME OVER";
+
+        return;
     }
 
     if(atrapaComida()){
@@ -250,6 +299,65 @@ function atrapaComida(){
     return false;
 }
 
+
+function verificarGameOver(){
+
+    let cabeza = serpiente[0];
+
+    if(cabeza.x < 0){
+
+        return true;
+    }
+
+    if(cabeza.y < 0){
+
+        return true;
+    }
+
+    if(cabeza.x >= canvas.width / TAMANIO_CELDA){
+
+        return true;
+    }
+
+    if(cabeza.y >= canvas.height / TAMANIO_CELDA){
+
+        return true;
+    }
+
+    return false;
+}
+
+
+function reiniciarJuego(){
+
+    pausarJuego();
+
+    serpiente.length = 0;
+
+    serpiente.push(
+        {x:0, y:6},
+        {x:0, y:5},
+        {x:0, y:4},
+        {x:0, y:3},
+        {x:0, y:2}
+    );
+
+    direccionActual = "derecha";
+
+    puntaje = 0;
+
+    document.getElementById("puntaje").innerText =
+    puntaje;
+
+    document.getElementById("estado").innerText =
+    "Jugando";
+
+    generarComida();
+
+    dibujarTodo();
+
+    iniciarJuego();
+}
 
 
 generarComida();
