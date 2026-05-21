@@ -8,7 +8,7 @@ const TAMANIO_CELDA = 25;
 function dibujarTodo() {
   limpiarCanvas();
   dibujarTablero();
-  pintarParte(0,19);
+  pintarParte(5,5);
 
 }
 
@@ -66,7 +66,29 @@ function pintarParte(lineaX, lineaY){
     );
 }
 
+function moverDerecha(){
 
+    let cabeza = serpiente[0];
+
+    let nuevaCabeza = {
+        x: cabeza.x + 1,
+        y: cabeza.y
+    };
+
+    serpiente.unshift(nuevaCabeza);
+
+    serpiente.pop();
+}
+
+function cambiarDireccion(direccion){
+
+    if(direccion == "derecha"){
+
+        moverDerecha();
+    }
+
+    dibujarTodo();
+}
 
 
 
