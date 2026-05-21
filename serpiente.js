@@ -251,6 +251,7 @@ function atrapaComida(){
 }
 
 
+
 generarComida();
 
 dibujarTodo();
