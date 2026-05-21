@@ -12,8 +12,6 @@ const serpiente = [
   {x:0, y:2}
 ];
 
-<<<<<<< HEAD
-=======
 let puntaje = 0;
 
 let comidaX = 0;
@@ -33,18 +31,14 @@ function pausarJuego(){
     clearInterval(intervaloSerpiente);
     document.getElementById("estado").innerText = "Pausado"
 }
->>>>>>> dev
 
 function dibujarTodo() {
   limpiarCanvas();
   dibujarTablero();
-<<<<<<< HEAD
   pintarParte(0,19);
   pintarSerpiente();
-=======
   pintarSerpiente();
   pintarComida();
->>>>>>> dev
 
 }
 
@@ -260,7 +254,6 @@ function atrapaComida(){
 
 function pintarSerpiente(){
 
-<<<<<<< HEAD
     for(let i = 0; i < serpiente.length; i++){
 
         let parte = serpiente[i];
@@ -269,8 +262,6 @@ function pintarSerpiente(){
     }
 }
 
-=======
 generarComida();
->>>>>>> dev
 
 dibujarTodo();
