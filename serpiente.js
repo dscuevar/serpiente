@@ -44,8 +44,6 @@ function pausarJuego(){
 function dibujarTodo() {
   limpiarCanvas();
   dibujarTablero();
-  pintarParte(0,19);
-  pintarSerpiente();
   pintarSerpiente();
   pintarComida();
 
@@ -301,15 +299,6 @@ function atrapaComida(){
     return false;
 }
 
-function pintarSerpiente(){
-
-    for(let i = 0; i < serpiente.length; i++){
-
-        let parte = serpiente[i];
-
-        pintarParte(parte.x, parte.y);
-    }
-}
 
 function verificarGameOver(){
 
