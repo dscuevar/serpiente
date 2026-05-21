@@ -262,6 +262,7 @@ function pintarSerpiente(){
     }
 }
 
+
 generarComida();
 
 dibujarTodo();
