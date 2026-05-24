@@ -174,8 +174,6 @@ function moverAbajo(){
 
 function cambiarDireccion(direccion){
 
-//si la serpiente va a hacia la derecha y quiere que regrese al mismo lado no va a poder, es decir, no se va a mover hacia su cola
-
     if(
         direccionActual == "derecha" &&
         direccion == "izquierda"
